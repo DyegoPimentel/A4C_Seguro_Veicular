@@ -114,7 +114,6 @@ function create_A4C_SV_cpt() {
 
 }
 add_action( 'init', 'create_A4C_SV_cpt', 0 );
-
 add_action( 'admin_init', 'my_admin' );
 
 function my_admin() {
@@ -215,7 +214,7 @@ function display_precos_meta_box() {
     ?>
     <form method="post">   
         <div class="input-group" style="width: 50%">
-            <label>ID</label><br>
+            <label class="input-group">ID</label><br>
             <input type="text" size="40" class="form-control" name="id_a4c_meta_box" value="<?php echo get_post_meta( get_the_ID(), 'id', true ); ?>" readonly />
         </div>
         <div class="input-group" style="width: 50%">
@@ -291,7 +290,7 @@ function display_precos_meta_box() {
     <?php
 }
 
-add_action( 'wp', 'A4C_insert_into_auto_cpt' );
+
 
 function A4C_check_for_similar_meta_ids() {
     $id_arrays_in_cpt = array();
@@ -395,6 +394,9 @@ function A4C_save_meta_box($post_id){
 
     //}
    update_post_meta( $post_id, 'categoria', $category); // atualiza a categoria no metabox
+
+   echo 'Resultado - '. print_r($_POST);
+   die;
 }
 
 

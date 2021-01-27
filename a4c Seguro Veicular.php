@@ -23,12 +23,16 @@ if (! defined('ABSPATH')){
 define ('A4C_DIR',plugin_dir_path(__FILE__));
 require_once(A4C_DIR . 'admin.php');
 
+add_action( 'wp', 'A4C_insert_into_auto_cpt' ); // Insere os dados do banco de dados no Custom Post Tipe
+
 
 class A4C_Seguro_Veicular {
     public function __construct() {
         add_action( 'admin_menu', 'A4C_menu_admin' ); // Ação de cria o Menu no Painel de Admin
         add_action('init', 'A4C_insert_table_database_SV'); // Cria o banco de dados.
         add_action('init', 'A4C_create_categories');
+        
+        
     }
 
     public function activate() {
