@@ -219,7 +219,7 @@ function display_precos_meta_box() {
         </div>
         <div class="input-group" style="width: 50%">
             <label>Categoria</label><br>
-            <input type="text" size="40" class="form-control" name="categoria_meta_box_select" value="<?php echo get_post_meta( get_the_ID(), 'categoria', true ); ?>" readonly />       
+            <input type="text" size="40" class="form-control" name="categoria_a4c_meta_box" value="<?php echo get_post_meta( get_the_ID(), 'categoria', true ); ?>" readonly />       
         </div>
         <div class="input-group">
             <label>Cota</label><br>
@@ -393,10 +393,21 @@ function A4C_save_meta_box($post_id){
     //return;
 
     //}
-   update_post_meta( $post_id, 'categoria', $category); // atualiza a categoria no metabox
 
-   echo 'Resultado - '. print_r($_POST);
-   die;
+
+    $wpdb->update( 
+        $table_name, 
+        array( 
+            'categoria' => $category,   // string
+            'valor_minimo' => $_POST['valor_minimo_a4c_meta_box']    // integer (number) 
+        ), 
+        array( 'id' => $_POST['id_a4c_meta_box'] ) 
+    );
+
+   // update_post_meta( $post_id, 'categoria', $category); // atualiza a categoria no metabox
+
+   // print_r($_POST['valor_minimo_a4c_meta_box']);
+   // die;
 }
 
 

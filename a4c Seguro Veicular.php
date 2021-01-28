@@ -28,7 +28,7 @@ add_action( 'wp', 'A4C_insert_into_auto_cpt' ); // Insere os dados do banco de d
 
 class A4C_Seguro_Veicular {
     public function __construct() {
-        add_action( 'admin_menu', 'A4C_menu_admin' ); // Ação de cria o Menu no Painel de Admin
+        //add_action( 'admin_menu', 'A4C_menu_admin' ); // Ação de cria o Menu no Painel de Admin
         add_action('init', 'A4C_insert_table_database_SV'); // Cria o banco de dados.
         add_action('init', 'A4C_create_categories');
         
@@ -57,6 +57,6 @@ if (class_exists('A4C_Seguro_Veicular')){
     $a4cModulo = new A4C_Seguro_Veicular();
     register_activation_hook(__FILE__, array($a4cModulo,'activate'));
     register_deactivation_hook(__FILE__, array($a4cModulo,'deactivate'));
-    register_uninstall_hook(__FILE__, array($a4cModulo,'uninstall'));
+    //register_uninstall_hook(__FILE__, array($a4cModulo,'uninstall'));
 
 }
