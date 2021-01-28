@@ -239,27 +239,27 @@ function display_precos_meta_box() {
         </div>
         <div class="input-group">
             <label>Fundo para terceiro - 30 Mil</label><br>
-            <input type="text" size="40" class="form-control" name="terceiro_30k_a4c_meta_box" value="<?php echo get_post_meta( get_the_ID(), 'fundo_tercerio_30k', true ); ?>" />       
+            <input type="text" size="40" class="form-control" name="fundo_tercerio_30k_a4c_meta_box" value="<?php echo get_post_meta( get_the_ID(), 'fundo_tercerio_30k', true ); ?>" />       
         </div>
         <div class="input-group">
             <label>Fundo para terceiro - 50 Mil</label><br>
-            <input type="text" size="40" name="terceiro_50k_a4c_meta_box" value="<?php echo get_post_meta( get_the_ID(), 'fundo_tercerio_50k', true ); ?>" />       
+            <input type="text" size="40" name="fundo_tercerio_50k_a4c_meta_box" value="<?php echo get_post_meta( get_the_ID(), 'fundo_tercerio_50k', true ); ?>" />       
         </div>
         <div class="input-group">
             <label>Fundo para terceiro - 70 Mil</label><br>
-            <input type="text" size="40" class="form-control" name="terceiro_70k_a4c_meta_box" value="<?php echo get_post_meta( get_the_ID(), 'fundo_tercerio_70k', true ); ?>" />       
+            <input type="text" size="40" class="form-control" name="fundo_tercerio_70k_a4c_meta_box" value="<?php echo get_post_meta( get_the_ID(), 'fundo_tercerio_70k', true ); ?>" />       
         </div>
         <div class="input-group">
             <label>Veiculo reserva - 15 dias</label><br>
-            <input type="text" size="40" class="form-control" name="reserva_15_a4c_meta_box" value="<?php echo get_post_meta( get_the_ID(), 'reserva_15_dias', true ); ?>" />       
+            <input type="text" size="40" class="form-control" name="reserva_15_dias_a4c_meta_box" value="<?php echo get_post_meta( get_the_ID(), 'reserva_15_dias', true ); ?>" />       
         </div>
         <div class="input-group">
             <label>Veiculo reserva - 30 dias</label><br>
-            <input type="text" size="40" class="form-control" name="reserva_30_a4c_meta_box" value="<?php echo get_post_meta( get_the_ID(), 'reserva_30_dias', true ); ?>" />       
+            <input type="text" size="40" class="form-control" name="reserva_30_dias_a4c_meta_box" value="<?php echo get_post_meta( get_the_ID(), 'reserva_30_dias', true ); ?>" />       
         </div>
         <div class="input-group">
             <label>Proteção de vidros - 70%</label><br>
-            <input type="text" size="40" class="form-control" name="protecao_vidros_a4c_meta_box" value="<?php echo get_post_meta( get_the_ID(), 'protecao_vidros_70', true ); ?>" />       
+            <input type="text" size="40" class="form-control" name="protecao_vidros_70_a4c_meta_box" value="<?php echo get_post_meta( get_the_ID(), 'protecao_vidros_70', true ); ?>" />       
         </div>
         <div class="input-group">
             <label>App Bronze até 10 mil</label><br>
@@ -394,12 +394,27 @@ function A4C_save_meta_box($post_id){
 
     //}
 
-
+    // Atualiza dados do meta no banco de dados
     $wpdb->update( 
         $table_name, 
         array( 
             'categoria' => $category,   // string
-            'valor_minimo' => $_POST['valor_minimo_a4c_meta_box']    // integer (number) 
+            'cota' => $_POST['cota_a4c_meta_box'],
+            'valor_minimo' => $_POST['valor_minimo_a4c_meta_box'],
+            'valor_maximo' => $_POST['valor_maximo_a4c_meta_box'],
+            'valor_24h_plano_ppv' => $_POST['24h_ppv_a4c_meta_box'],
+            'fundo_tercerio_30k' => $_POST['fundo_tercerio_30k_a4c_meta_box'],
+            'fundo_tercerio_50k' => $_POST['fundo_tercerio_50k_a4c_meta_box'],
+            'fundo_tercerio_70k' => $_POST['fundo_tercerio_70k_a4c_meta_box'],
+            'reserva_15_dias' => $_POST['reserva_15_dias_a4c_meta_box'],
+            'reserva_30_dias' => $_POST['reserva_30_dias_a4c_meta_box'],
+            'protecao_vidros_70' => $_POST['protecao_vidros_70_a4c_meta_box'],
+            'app_bronze' => $_POST['app_bronze_a4c_meta_box'],
+            'app_prata' => $_POST['app_prata_a4c_meta_box'],
+            'plataforma_rastreador' => $_POST['plataforma_rastreador_a4c_meta_box'],
+            'adesao' => $_POST['adesao_a4c_meta_box'],
+            'rastreador' => $_POST['rastreador_a4c_meta_box'],
+            'cota_participacao' => $_POST['cota_participacao_a4c_meta_box']                
         ), 
         array( 'id' => $_POST['id_a4c_meta_box'] ) 
     );
