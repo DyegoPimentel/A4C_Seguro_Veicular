@@ -19,18 +19,21 @@ if (! defined('ABSPATH')){
     die('Invalid request.');
 }
 
-// Link das paginas 
+// Link 
 define ('A4C_DIR',plugin_dir_path(__FILE__));
-require_once(A4C_DIR . 'admin.php');
+require_once(A4C_DIR . 'inc/admin.php');
+require_once(A4C_DIR . 'inc/category.php');
+require_once(A4C_DIR . 'inc/custom_post.php');
+require_once(A4C_DIR . 'inc/meta_box.php');
 
-add_action( 'wp', 'A4C_insert_into_auto_cpt' ); // Insere os dados do banco de dados no Custom Post Tipe
+setlocale(LC_MONETARY, 'pt_BR'); // Configura o valor da moeda.
 
 
 class A4C_Seguro_Veicular {
     public function __construct() {
         //add_action( 'admin_menu', 'A4C_menu_admin' ); // Ação de cria o Menu no Painel de Admin
-        add_action('init', 'A4C_insert_table_database_SV'); // Cria o banco de dados.
-        add_action('init', 'A4C_create_categories');
+        //add_action('init', 'A4C_insert_table_database_SV'); // Cria o banco de dados.
+        // add_action('init', 'A4C_create_categories');
         
         
     }
@@ -43,12 +46,12 @@ class A4C_Seguro_Veicular {
     public function deactivate() {
         // A função abaixo deve ser realocada para a função uninstall, após o termino da fase de teste.
         A4C_delete_table_database_SV(); // Deleta o banco de dados.
-        
+        A4C_delete_categories(); // Deleta todas as categorias criadas ao desinstalar.
 
     }
 
     public function uninstall() {
-        A4C_delete_categories(); // Deleta todas as categorias criadas ao desinstalar.
+        
 
     }
 }
