@@ -33,13 +33,13 @@ class A4C_Seguro_Veicular {
     public function __construct() {
         //add_action( 'admin_menu', 'A4C_menu_admin' ); // Ação de cria o Menu no Painel de Admin
         //add_action('init', 'A4C_insert_table_database_SV'); // Cria o banco de dados.
-        // add_action('init', 'A4C_create_categories');
         
+        add_action('admin_init','A4C_create_categories');
         
     }
 
     public function activate() {
-        
+       
 
     }
 

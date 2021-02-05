@@ -301,26 +301,4 @@ function A4C_delete_table_database_SV() {
 //   // print_r($_POST['valor_minimo_a4c_meta_box']);
 //   // die;
 //}
-
-add_action( 'transition_post_status', 'A4C_transition_post_status', 10, 3 );  
-
-function A4C_transition_post_status( $new_status, $old_status, $post ) {
-    if ( $new_status == 'auto-draft' && $old_status == 'new' ) {
-        // the post is inserted
-        //A4C_create_cpt();
-        //A4C_insert_into_auto_cpt();
-
-        
-    } else if ( $new_status == 'publish' && $old_status != 'publish' ) {
-        // the post is published
-        //Save Hook
-        //add_action( 'save_post', 'A4C_save_meta_box' );
-
-    } else {
-        // the post is updated
-        //Save Hook
-        //add_action( 'save_post', 'A4C_save_meta_box' );
-
-    }
-}
 ?>
